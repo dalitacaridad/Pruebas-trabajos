@@ -1,195 +1,334 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prueba de ventana modal accesible</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      line-height: 1.6;
-      color: #000;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
-    a {
-      color: #EC0000;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    main {
-      padding: 20px;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      border: 2px solid #EC0000;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 400px;
-      z-index: 1000;
-      padding: 20px;
-    }
-    .modal-header {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #EC0000;
-      margin-bottom: 10px;
-    }
-    .modal p {
-      margin: 0 0 20px;
-    }
-    .modal button {
-      background: #EC0000;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .modal button:hover {
-      background: #cc0000;
-    }
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: transparent;
-      border: none;
-      font-size: 20px;
-      font-weight: bold;
-      color: #EC0000;
-      cursor: pointer;
-    }
-    .close-btn:hover {
-      color: #cc0000;
-    }
-    .backdrop {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>UX Writing accesible</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Prueba de Ventana Modal</h1>
-    <p>Esta es una página de prueba para verificar el comportamiento del foco con una ventana modal.</p>
-  </header>
-  <main id="main-content">
-    <p><a href="#">Enlace 1</a></p>
-    <p><a href="#">Enlace 2</a></p>
-    <button id="open-modal">Abrir modal</button>
-  </main>
 
-  <div class="backdrop" id="backdrop"></div>
+<!-- Skip link -->
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
 
-  <div class="modal" id="modal" role="dialog" aria-labelledby="modal-header" aria-hidden="true">
-    <button class="close-btn" id="close-modal-icon" aria-label="Cerrar Modal">×</button>
-    <div class="modal-header" id="modal-header">Encabezado de Modal</div>
-    <p>Esta es una ventana modal. Usa el botón para cerrarla.</p>
-    <button id="close-modal">Aceptar lo que sea</button>
-  </div>
+<!-- HEADER -->
+<header>
+    <div>
+        <a href="/">
+            <img src="images/logo_writing.png" alt="Nombre de la escuela - Página de inicio">
+        </a>
+        <p>Nombre Escuela</p>
+    </div>
+    <nav aria-label="Navegación principal">
+        <ul id="menu" class="clean-list">
+            <li><a href="#descripcion">Descripción</a></li>
+            <li><a href="#para-quien">¿Para quién es?</a></li>
+            <li><a href="#aprendizaje">¿Qué aprenderás?</a></li>
+            <li><a href="#contenido">Contenido</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+        </ul>
+    </nav>
+    <div class="header-actions">
+        <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+        ☰
+        </button>
 
-  <script>
-    const openModalButton = document.getElementById('open-modal');
-    const closeModalButton = document.getElementById('close-modal');
-    const closeModalIcon = document.getElementById('close-modal-icon');
-    const modal = document.getElementById('modal');
-    const backdrop = document.getElementById('backdrop');
-    const mainContent = document.getElementById('main-content');
-    const focusableElementsString = 'button, [tabindex]:not([tabindex="-1"])';
-    let focusableElements;
-    let firstFocusableElement;
-    let lastFocusableElement;
+        <a href="#formulario" class="cta">Inscribirme</a>
+    </div>
 
-    // Función para abrir la modal
-    function openModal() {
-      // Mover el contenido principal fuera del DOM temporalmente
-      const body = document.body;
-      const hiddenDiv = document.createElement('div');
 
-      hiddenDiv.id = 'hidden-div';
-      hiddenDiv.style.display = 'none';
-      body.insertBefore(hiddenDiv, modal);
-      hiddenDiv.appendChild(mainContent);
+</header>
 
-      // Mostrar
-      modal.style.display = 'block';
-      backdrop.style.display = 'block';
-      modal.setAttribute('aria-hidden', 'false');
+<!-- MAIN -->
+<main id="main">
+    <h1>UX Writing accesible</h1>
+    <p>Interfaces digitales claras, útiles y para todas las personas</p>
+    <img src="images/hero.png" alt="">
+<!-- Primera section -->    
+    <section id="descripcion">
+        <h2>Descripción del curso</h2>
+        <dl>
+            <div>
+                <dt>Duración</dt>
+                <dd>Texto...</dd>
+            </div>
+            <div>
+                <dt>Próxima edición</dt>
+                <dd>Texto...</dd>
+            </div>
+            <div>
+                <dt>Modalidad</dt>
+                <dd>Texto...</dd>
+            </div>
+        </dl>
+    </section>
+<!-- Segunda section -->      
+    <section id="para-quien">
+        <h2>¿Para quién es este curso?</h2>
+        <ul class="clean-list">
+            <li>
+            <article>
+                <h3>UX/UI Designers</h3>
+                <p>Descripción breve del perfil...</p>
+            </article>
+            </li>
+            <li>
+            <article>
+                <h3>Product Designers</h3>
+                <p>Descripción breve del perfil...</p>
+            </article>
+            </li>
+            <li>
+            <article>
+                <h3>Content Designers</h3>
+                <p>Descripción breve del perfil...</p>
+            </article>
+            </li>
+        </ul>
+    </section>
+<!-- Tercera section -->  
+    <section id="aprendizaje">
+    <h2>¿Qué aprenderás?</h2>
+        <ul class="clean-list">
+        <li>
+            <article>
+                <h3>Lorem ipsum</h3>
+                <p>Descripción...</p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>Lorem ipsum</h3>
+                <p>Descripción...</p>
+            </article>
+        </li>
+                <li>
+            <article>
+                <h3>Lorem ipsum</h3>
+                <p>Descripción...</p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>Lorem ipsum</h3>
+                <p>Descripción...</p>
+            </article>
+        </li>
+        </ul>
+    </section>
+<!-- Cuarta section -->  
+<section id="contenido">
+    <h2>Contenido</h2>
+    <div>
+        <div>    
+            <ol>
+                <li>Introducción al UX Writing</li>
+                <li>Conocer a las personas</li>
+                <li>Estrategia de contenidos</li>
+                <li>Arquitectura de la información</li>
+                <li>Microcopy en interfaces</li>
+                <li>UX Writing accesible</li>
+            </ol>
+        <a href="pdf/SHIFTA_POSGRADO_UXWRITING_folleto2406.pdf" download>
+            Descargar programa del curso
+        </a>
+        </div>
+        <div>
+            <img src="images/process.png" alt="">
+        </div>
+    </div>
+</section>
+<!-- Quinta section -->  
+<section id="testimonios">
+    <h2>Testimonios</h2>
+    <ul class="clean-list">
+        <li>
+            <article>
+                <h3>Excelente curso</h3>
+                    <blockquote>
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </blockquote>
+                    <p>
+                        <strong>Nombre Apellido</strong>,
+                        <time datetime="2024-01-01">1 de enero de 2024</time>
+                    </p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>Excelente curso</h3>
+                    <blockquote>
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </blockquote>
+                    <p>
+                        <strong>Nombre Apellido</strong>,
+                        <time datetime="2024-01-01">1 de enero de 2024</time>
+                    </p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>Excelente curso</h3>
+                    <blockquote>
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </blockquote>
+                    <p>
+                        <strong>Nombre Apellido</strong>,
+                        <time datetime="2024-01-01">1 de enero de 2024</time>
+                    </p>
+            </article>
+        </li>
+        <li>
+            <article>
+                <h3>Excelente curso</h3>
+                    <blockquote>
+                        <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </blockquote>
+                    <p>
+                        <strong>Nombre Apellido</strong>,
+                        <time datetime="2024-01-01">1 de enero de 2024</time>
+                    </p>
+            </article>
+        </li>
+    </ul>
+</section>
+</main>
 
-      // Foco
-      focusableElements = modal.querySelectorAll(focusableElementsString);
-      firstFocusableElement = focusableElements[0];
-      lastFocusableElement = focusableElements[focusableElements.length - 1];
-      firstFocusableElement.focus();
-    }
+<!-- FOOTER -->
+<footer>
+    <h2 class="visually-hidden">Información del sitio</h2>
+    <div>
+        <h3>Escuela</h3>
+            <ul class="clean-list">
+                <li><a href="#">¿Quiénes somos?</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+    </div>
+    <div>
+        <h3>Comunidad</h3>
+            <ul class="clean-list">
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Pódcast</a></li>
+            </ul>
+    </div>
+    <div>
+        <h3>Redes sociales</h3>
+            <ul class="clean-list">
+                <li>
+                <a href="#" target="_blank">
+                <img 
+                    src="icons/X Logo.svg" 
+                    alt="" 
+                    aria-hidden="true"
+                >
+                <span class="visually-hidden">
+                    Seguir a Nombre Escuela en X
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                <img 
+                    src="icons/Logo Instagram.svg" 
+                    alt="" 
+                    aria-hidden="true"
+                >
+                <span class="visually-hidden">
+                    Seguir a Nombre Escuela en Instagram
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                <img 
+                    src="icons/Logo YouTube.svg" 
+                    alt="" 
+                    aria-hidden="true"
+                >
+                <span class="visually-hidden">
+                    Seguir a Nombre Escuela en YouTube
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank">
+                <img 
+                    src="icons/LinkedIn.svg"
+                    alt="" 
+                    aria-hidden="true"
+                >
+                <span class="visually-hidden">
+                    Seguir a Nombre Escuela en LinkedIn
+                </span>
+                </a>
+            </li>
+            </ul>
+    </div>
+    <div>
+        <h3>Newsletter</h3>
+            <p>
+            Suscríbete y mantente al día con las últimas noticias, 
+            ofertas exclusivas y recursos útiles directamente en tu correo.
+            </p>
+        <form action="#" method="post">
+            <div>
+                <label for="email">Correo electrónico</label>
+                <input 
+                type="email" 
+                id="email" 
+                name="email"
+                required
+                autocomplete="email"
+                >
+            </div>
+            <button type="submit" id="abrir-modal">
+                Suscribirme a la newsletter
+            </button>
+        </form>
+    </div>
+</footer>
+<!-- modal confirmación newsletter -->
+<div id="modal" hidden>
+    <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        class="modal-contenido"
+    >
+        <button class="modal-close" id="cerrar-modal" aria-label="Cerrar">
+        ✕
+        </button>
 
-    // Función para cerrar la modal
-    function closeModal() {
-      // Restaurar el contenido principal al DOM
-      const hiddenDiv = document.getElementById('hidden-div');
-      const mainContentRestored = hiddenDiv.firstChild;
-      document.body.insertBefore(mainContentRestored, backdrop);
-      hiddenDiv.remove();
+        <h2 id="modal-title">Confirmación de suscripción</h2>
 
-      // Ocultar la modal
-      modal.style.display = 'none';
-      backdrop.style.display = 'none';
-      modal.setAttribute('aria-hidden', 'true');
+        <p>
+        Recibirás un correo electrónico para confirmar tu suscripción.
+        </p>
+        <button id="aceptar-modal">Aceptar</button>
+    </div>
+</div>
+<!-- Drawer menú en tablet y mobile -->
+<div id="drawer" hidden>
+    <div class="drawer-content">
+        <button id="drawer-close">✕</button>
+        <h2>Menú principal</h2>
 
-      // Restaurar el foco
-      openModalButton.focus();
-    }
-
-    // Atrapando el foco dentro de la modal
-    function trapFocus(event) {
-      if (event.key === 'Tab') {
-        if (event.shiftKey) {
-          // Navegación inversa
-          if (document.activeElement === firstFocusableElement) {
-            event.preventDefault();
-            lastFocusableElement.focus();
-          }
-        } else {
-          // Navegación normal
-          if (document.activeElement === lastFocusableElement) {
-            event.preventDefault();
-            firstFocusableElement.focus();
-          }
-        }
-      }
-    }
-
-    // Listeners para abrir y cerrar la modal
-    openModalButton.addEventListener('click', openModal);
-    closeModalButton.addEventListener('click', closeModal);
-    closeModalIcon.addEventListener('click', closeModal);
-
-    // Cerrar modal al presionar Escape
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
-        closeModal();
-      } else if (modal.getAttribute('aria-hidden') === 'false') {
-        trapFocus(e);
-      }
-    });
-  </script>
+        <!-- aquí se copiará el menú -->
+        <div id="drawer-menu"></div>
+    </div>
+</div>
+</div>
+<script src="script.js" defer></script>
 </body>
 </html>
